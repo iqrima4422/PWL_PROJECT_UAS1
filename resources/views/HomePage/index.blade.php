@@ -26,16 +26,31 @@
   
   <section class="hero">
             <div class="row">
-                  <div class="hero__item set-bg"  data-setbg="{{asset('img/hero/banner2.png')}}">
+                  <div class="hero__item set-bg"  data-setbg="{{asset('src/img/toko2.jpeg')}}">
                     <div class="hero__text">
-                      <span>TOKO SEMBAKO FAST</span>
+                      <span>TOKO SEMBAKO BAROKAH</span>
                       <h2> Segala Macam Sembako <br />100% Halal</h2>
                       <h6>Free Pickup and Delivery Available</h6> <br>
-                      <a href="#" class="primary-btn">SHOP NOW</a>
+                      <a href="{{ route('GalleryPage') }}" class="primary-btn">SHOP NOW</a>
                     </div>
                   </div>
             </div>
     </section>
+
+ <!-- Start Categories of The Month -->
+ <section class="container py-3">
+        <div class="row text-jusfity">
+                <h1 style="color:green;" class="h1" >Tentang Toko Sembako Barokah</h1>
+                <p style="color:black;">
+                Toko Kelontong Barokah merupakan toko yang menjual aneka macam barang sembako dan kebutuhan sehari-hari, seperti; gula, beras, telur, tepung dan lain sebagainya. 
+                Melayani transaksi yang cukup besar disetiap harinya. Barang yanag dijual terjamin 100% Halal. 
+                Sistem penjualan pada Toko Kelontong Barokah ini hanya melayani pengiriman Cash On Delivery (COD).
+                </p> 
+        </div>
+        
+    </section>
+    <!-- End Categories of The Month -->
+
     
 
 <!-- Categories Section Begin -->
@@ -77,7 +92,7 @@
     </section>
     <!-- Categories Section End -->
 
-      <!-- Featured Section Begin -->
+    <!-- Featured Section Begin -->
     <section class="featured spad">
         <div class="container">
             <div class="row">
@@ -186,7 +201,7 @@
 
     <section>
     <div class="card card-primary card-outline">
-    <div class="card-body text-white bg-info">
+    <div class="card-body text-white bg-green">
     <h3 class="section-title-2 text-uppercase font-weight-300 text-center" ><b>Our</b> <span class="blue-text">Information</span></h3>
     <br></br>
             <div class="row">

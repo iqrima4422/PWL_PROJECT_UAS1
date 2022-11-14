@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\DB;
 class ProductController extends Controller
 {
 
-    // create data user
+    // create data product
     public function createProduct()
     {
         $supplier = Supplier::all();
@@ -21,7 +21,7 @@ class ProductController extends Controller
         return view('AdminView.createDataProduct', compact('supplier', 'tittle'));
 
     }
-    // fungsi store data user
+    // fungsi store data product
     public function storeProduct(Request $request)
     {
        //melakukan validasi data
@@ -50,7 +50,7 @@ class ProductController extends Controller
         $product -> supplier_id = $request->get('supplier');
         $product -> save();
 
-        return redirect('/homeAdmin') -> with('success', 'Data Barang berhasil Ditambahkan');
+        return redirect('/dataProduct') -> with('success', 'Data Barang berhasil Ditambahkan');
     }
 
     public function destroyproduct($id)

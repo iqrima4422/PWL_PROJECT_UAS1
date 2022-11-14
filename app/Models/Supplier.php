@@ -15,5 +15,8 @@ class Supplier extends Model
     public function products(){
     	return $this->hasMany('App\Models\Product' , 'supplier_id');
     }
+    public function diskon(){
+    	return $this->hasMany('App\Models\Diskon' , 'supplier_id');
+    }
 
 }

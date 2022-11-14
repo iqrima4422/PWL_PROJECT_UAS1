@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Product;
 use App\Models\Supplier;
 use App\Models\Transaksi;
+use App\Models\Diskon;
 use Auth;
 use PDF;
 use Illuminate\Support\Facades\DB;
@@ -34,6 +35,7 @@ class AdminController extends Controller
             'dataProduct' => $dataProduct,
         ]);
     }
+    
 
     function contact()
     {
@@ -234,5 +236,13 @@ class AdminController extends Controller
         $user = User::where ('name','like',"%".$search."%");
         return view ('HomePage.gallery',['users' => $user]);
       
+    }
+
+    function datadiskon()
+    {
+        $dataDiskon = Diskon::with('suppliers')->orderBy('id', 'asc')->paginate(5);
+        return view('AdminView.dataDiskon',['tittle' => 'Data Diskon',
+            'dataDiskon' => $dataDiskon,
+        ]);
     }
 }

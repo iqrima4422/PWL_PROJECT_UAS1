@@ -1,8 +1,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="height: 100vh;">
     <!-- Brand Logo -->
     <a href="{{ route('HomePage')}}" class="brand-link">
-      <img src="{{ asset('src/img/brandlogo.jpg') }}" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Toko Fast</span>
+      <img src="{{ asset('src/img/barokah.jfif') }}" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Toko Barokah</span>
     </a>
 
     <!-- Sidebar -->
@@ -13,7 +13,7 @@
           <img src="{{ asset('storage/'.auth()->user()->foto) }}" class="img-circle elevation-2">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{ auth()->user()->name }}</a>
+          <a href="{{ route('ProfilePage') }}" class="d-block">{{ auth()->user()->name }}</a>
         </div>
       </div>
 
@@ -32,17 +32,17 @@
                      Halaman Utama</p>
                 </a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
                 <a href="{{ route('ProfilePage') }}" class="nav-link {{ ($tittle === "Profile Page") ? 'active' : ''}}">
                 <i class="bi bi-person-circle"></i>
                   <p> Halaman Profile</p>
                 </a>
-          </li>
+          </li> -->
             
           <li class="nav-item">
               <a href="{{ route('GalleryPage') }}" class="nav-link {{ ($tittle === "Gallery Page") ? 'active' : ''}}">
               <i class="bi bi-caret-right-square"></i>
-                  <p>Gallery Product
+                  <p>Produk Kami
                   </p>
                 </a>
           </li>
@@ -51,7 +51,7 @@
           <a href="{{ route('PurchasePage') }}" class="nav-link {{ ($tittle === "Purchase Page") ? 'active' : ''}}">
             <i class="bi bi-receipt"></i>
               <p>
-               Purchase
+               Pembelian
               </p>
             </a>
           </li>

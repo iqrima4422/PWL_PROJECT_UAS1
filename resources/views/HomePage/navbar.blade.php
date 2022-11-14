@@ -9,7 +9,7 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="{{ route('HomePage') }} " class="nav-link {{ ($tittle === "Home Page") ? 'active' : ''}}" class="nav-link">Home</a>
       </li>
-      <div class="dropdown">
+      <!-- <div class="dropdown">
         <button class="btn b dropdown-toggle" type="" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
           Shop
         </button>
@@ -17,7 +17,7 @@
             <a class="dropdown-item" href="{{ route('shopingCart') }} " class="nav-link {{ ($tittle === "Checkout Page ") ? 'active' : ''}}" class="nav-link">Shoping Cart</a>
             <a class="dropdown-item" href="{{ route('CheckoutPage') }} " class="nav-link {{ ($tittle === " Shoping Card | Shop ") ? 'active' : ''}}" class="nav-link">Check Out</a>
           </div>
-        </div>
+        </div> -->
       
       <li class="nav-item d-none d-sm-inline-block">
       <a href="{{ route('ContactPage') }} " class="nav-link {{ ($tittle === "Contact Page") ? 'active' : ''}}" class="nav-link">Contact</a>
@@ -31,7 +31,7 @@
       <!-- Notifications Dropdown Menu -->
       <div class="dropdown">
                 <button type="button" class="btn btn-info" data-toggle="dropdown">
-                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> Keranjang <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                     <div class="row total-header-section">
@@ -43,7 +43,7 @@
                             @php $total += $details['harga'] * $details['quantity'] @endphp
                         @endforeach
                         <div class="col-lg-6 col-sm-6 col-6 total-section text-right">
-                            <p>Total: <span class="text-info">$ {{ $total }}</span></p>
+                            <p>Total: <span class="text-info">Rp. {{ $total }}</span></p>
                         </div>
                     </div>
                     @if(session('cart'))
@@ -61,9 +61,9 @@
                         @endforeach
                     @endif
                     <div class="row">
-                        <div class="col-lg-12 col-sm-12 col-12 text-center checkout">
-                            <a href="{{ route('Cart') }}" class="btn btn-primary btn-block">View all</a>
-                        </div>
+                        <!-- <div class="text-center checkout"> -->
+                            <a href="{{ route('Cart') }}" class="btn btn-primary btn-block">Tampilkan semua</a>
+                        <!-- </div> -->
                     </div>
                 </div>
             </div>

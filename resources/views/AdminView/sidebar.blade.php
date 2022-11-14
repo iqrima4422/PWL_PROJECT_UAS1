@@ -13,7 +13,7 @@
           <img src="{{ asset('storage/'.auth()->user()->foto) }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{ auth()->user()->name }}</a>
+          <a href="{{ route('ProfilePageAdmin') }}" class="d-block">{{ auth()->user()->name }}</a>
         </div>
       </div>
 
@@ -42,12 +42,12 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
           <a href="{{ route('ProfilePageAdmin') }} " class="nav-link {{ ($tittle === "Profile Page") ? 'active' : ''}}">
           <i class="bi bi-person-badge"></i>
               <p>Profile</p>
             </a>
-          </li>
+          </li> -->
          
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -61,7 +61,13 @@
               <li class="nav-item">
                 <a href="{{ route('DataProductPage') }}" class="nav-link {{ ($tittle === "Data Product") ? 'active' : ''}}"">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Data Product</p>
+                  <p>Data Produk</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('DataDiskonPage') }}" class="nav-link {{ ($tittle === "Data Diskon") ? 'active' : ''}}"">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Produk Diskon</p>
                 </a>
               </li>
               <li class="nav-item">

@@ -43,14 +43,14 @@
                     <div class="contact__widget">
                         <span class="bi bi-telephone"></span>
                         <h4>Telepon</h4>
-                        <p>++0341-478888</p>
+                        <p>+62856-478888</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 text-center">
                     <div class="contact__widget">
                         <span class="bi bi-geo-alt"></span>
                         <h4>Alamat</h4>
-                        <p>Jl. Soekarno Hatta No 09. Malang 65141</p>
+                        <p>Desa Sumberbulu, Kec. Tegalsiwalan, Keb.Probolinggo, kode pos : 67274</p> 
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 text-center">
@@ -64,7 +64,7 @@
                     <div class="contact__widget">
                         <span class="bi bi-envelope-open"></span>
                         <h4>Email</h4>
-                        <p>hellotokofast@colorlib.com</p>
+                        <p>hellobarokahllers@colorlib.com</p>
                     </div>
                 </div>
             </div>
@@ -74,15 +74,14 @@
 
     <!-- Map Begin -->
     <div class="map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d28163.54610241721!2d112.60008712001087!3d-7.940501676869157!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sid!2sid!4v1654308541644!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            height="500" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25134.49867077512!2d113.23260179403765!3d-7.819069511616564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd652dfb7c30519%3A0xdf70cfe08f974918!2sSumberbulu%2C%20Kec.%20Tegalsiwalan%2C%20Kabupaten%20Probolinggo%2C%20Jawa%20Timur!5e0!3m2!1sid!2sid!4v1667747988985!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         <div class="map-inside">
             <i class="bi bi-geo"></i>
             <div class="inside-widget">
-                <h4>Kota Malang</h4>
+                <h4>Kabupaten Probolinggo</h4>
                 <ul>
-                    <li>Telepon: +0341-478888</li>
-                    <li>Add: Jl. Soekarno Hatta No 09. Malang 65141</li>
+                    <li>Telepon: +62856-478888</li>
+                    <li>Add: Desa Sumberbulu, Kec. Tegalsiwalan, Keb.Probolinggo, kode pos : 67274</li>
                 </ul>
             </div>
         </div>
@@ -115,6 +114,7 @@
             </form>
         </div>
     </div>
+    <!-- Contact Form End -->
     <!-- Contact Form End -->
     <!-- Css Styles -->
 <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" type="text/css">

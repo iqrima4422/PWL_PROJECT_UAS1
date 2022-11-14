@@ -1,10 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PageFirstController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DiskonController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SuplierController;
 use App\Http\Controllers\PurchaseController;
@@ -24,11 +26,15 @@ Route::get('/', function () {
     return redirect('/home');
 });
 
+
+
 Route::get('/logout', [LoginController::class, 'logout']) -> name('logout');
+Route::get('/', [PageFirstController::class, 'pageindex']);
+// Route::get('/', function () {return view('PageFirst.pagefirst', ['tittle' => 'Page First']); });
 
 
 Route::middleware(['guest'])->group(function () {
-    Route::get('/login', function () { return view('Loginpage.login', ['tittle' => 'Login Page']); }) -> name('LoginPage');
+    Route::get('/login', function () { return view('LoginPage.login', ['tittle' => 'Login Page']); }) -> name('LoginPage');
     Route::post('/postlogin', [LoginController::class, 'login']) -> name('login');
     Route::post('/postregister', [RegisterController::class, 'store']) -> name('register');
     Route::get('/register',[RegisterController::class, 'index'])->name('RegisterPage');
@@ -39,9 +45,19 @@ Route::middleware(['auth','cekLevel:admin'])->group(function () {
     Route::get('/profileAdmin', [AdminController::class, 'profile']) -> name('ProfilePageAdmin');
     Route::post('/postProfileAdmin', [AdminController::class, 'updateDataAdmin']) -> name('PostProfileAdmin');
     Route::get('/dataProduct', [AdminController::class, 'dataproduct']) -> name('DataProductPage');
+    
     Route::get('/dataSupplier', [AdminController::class, 'datasupplier']) -> name('DataSupplierPage');
     Route::get('/contactAdmin', [AdminController::class, 'contact']) -> name('ContactAdminPage');
     Route::post('/changePassword', [AdminController::class, 'updateDataPassword']) -> name('ChangePasswordAdmin');
+
+    Route::get('/dataDiskon', [AdminController::class, 'datadiskon']) -> name('DataDiskonPage');
+    Route::get('/createDiskon', [DiskonController::class, 'createDiskon']) -> name('CreateDiskon');
+    Route::post('/postCreateDiskon', [DiskonController::class, 'storeDiskon']) -> name('PostCreateDiskon');
+    Route::get('/editDiskon/{id}', [DiskonController::class, 'editdiskon']) -> name('EditDiskon');
+    Route::post('/updateDiskon/{id}', [DiskonController::class, 'updateDataDiskon']) -> name('UpdateDiskon');
+    Route::get('/deleteDiskon/{id}', [DiskonController::class, 'destroydiskon']) -> name('DeleteDiskon');
+    Route::get('/printDiskon', [DiskonController::class, 'cetakDataDiskon']) -> name('CetakDataDiskon');
+    
 
     Route::get('/dataPenjualan', [AdminController::class, 'datapenjualan']) -> name('DataPenjualanPage');
     Route::get('/editDataPenjualan/{id}', [AdminController::class, 'editDataPenjualan']) -> name('editDataPenjualan');
