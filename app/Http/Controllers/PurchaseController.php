@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Payment;
 use App\Models\Transaksi;
+use App\Models\Region;
 use Auth;
 use PDF;
 use Illuminate\Support\Facades\Storage;

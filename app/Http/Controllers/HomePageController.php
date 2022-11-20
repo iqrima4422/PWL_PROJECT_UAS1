@@ -202,11 +202,13 @@ class HomePageController extends Controller
     public function postCheckOut(Request $request)
     {
         $cart = session()->get('cart');
+        $cartdiskon = session()->get('cartdiskon');
         
         foreach($cart as $item){
             $transaksi = new Transaksi();
             $transaksi->user_id = Auth::user()->id;
             $transaksi->product_id = $item['id'];
+            $transaksi->region_id = $item['id'];
             $transaksi->qty = $item['quantity'];
             $transaksi->Tanggal_beli = now()->format('Y-m-d');
             $transaksi->created_at = now();
@@ -214,8 +216,8 @@ class HomePageController extends Controller
 
             $product = Product::find($item['id']);
             $payment = new Payment();
-            $total = $cart[$product->id]['quantity'] * $product->harga;
-            $payment->total_bayar = $total;
+            $total1 = $cart[$product->id]['quantity'] * $product->harga;
+            $payment->total_bayar = $total1;
             $payment->transaksi_id = $transaksi->id;
             $payment->tanggal_bayar = now();
             $payment->created_at = now();
@@ -223,8 +225,32 @@ class HomePageController extends Controller
             $product->stok = $product->stok - $cart[$product->id]['quantity'];
             $product->save();
         }
+
+        foreach($cartdiskon as $item){
+            $transaksi = new Transaksi();
+            $transaksi->user_id = Auth::user()->id;
+            $transaksi->product_id = $item['id'];
+            $transaksi->region_id = $item['id'];
+            $transaksi->qty = $item['quantity'];
+            $transaksi->Tanggal_beli = now()->format('Y-m-d');
+            $transaksi->created_at = now();
+            $transaksi->save();
+
+            $product = Product::find($item['id']);
+            $payment = new Payment();
+            $total2 = $cartdiskon[$product->id]['quantity'] * $product->harga;
+            $payment->total_bayar = $total1 + $total2;
+            $payment->transaksi_id = $transaksi->id;
+            $payment->tanggal_bayar = now();
+            $payment->created_at = now();
+            $payment->save();
+            $product->stok = $product->stok - $cartdiskon[$product->id]['quantity'];
+            $product->save();
+        }
+
         //destroy session
         session()->forget('cart');
+        session()->forget('cartdiskon');
         return redirect('/purchase')->with('success', 'Pembayaran berhasil, silahkan cek email anda');
     }
 

@@ -28,14 +28,15 @@
 
                             <div class="row">
                             <div class="form-group">
-                                <label for="region">Alamat Pengiriman Barang (COD)</label>
-                                <select name="region" class="form-control" data-placeholder="Select">
+                                <label for="region">Pilih Alamat Pengiriman Barang (COD)<span>*</span></label>
+                                <select name="region" class="form-control">
                                     @foreach ($region as $region) 
                                         <option value="{{ $region->id }}">{{ $region->alamat_cod }}</option>    
                                     @endforeach
                                 </select>
                             </div>
                             </div>
+                            
 
                             <div class="row">
                                 <div class="col-lg-6">
@@ -77,7 +78,7 @@
                                 <div class="checkout__input__checkbox">
                                     
                                 </div>
-                                <p style="color: black;">Setiap pemesanan barang yang dibeli hanya hanya melayani pembayaran tunai</p>
+                                <p style="color: black;">Setiap pemesanan barang yang dibeli hanya melayani pembayaran tunai saat COD</p>
                                 
                                 <button type="submit" class="site-btn">Pesan Sekarang</button>
                             </div>
