@@ -240,6 +240,7 @@ class AdminController extends Controller
 
     function datadiskon()
     {
+        $dataDiskon = Diskon::all();
         $dataDiskon = Diskon::with('suppliers')->orderBy('id', 'asc')->paginate(5);
         return view('AdminView.dataDiskon',['tittle' => 'Data Diskon',
             'dataDiskon' => $dataDiskon,

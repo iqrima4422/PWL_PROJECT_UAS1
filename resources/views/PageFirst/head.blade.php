@@ -7,9 +7,6 @@
 
 <!-- Theme style -->
 
-    <!-- <link rel="apple-touch-icon" href="{{asset('img2/apple-icon.png')}}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('img2/favicon.ico')}}"> -->
-
     <link rel="stylesheet" href="{{asset('css3/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('css3/templatemo.css')}}">
     <link rel="stylesheet" href="{{asset('css3/custom.css')}}">

@@ -19,6 +19,7 @@ class TransaksiSeeder extends Seeder
                 'Tanggal_beli' => \Carbon\Carbon::createFromDate(2000,01,01)->toDateTimeString(),
                 'user_id' => '1 ',
                 'product_id' => '1',
+                'region_id' => '1',
             ],
         ]);
     }

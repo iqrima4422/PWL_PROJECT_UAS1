@@ -51,13 +51,12 @@
                 </div>
 
 
-
                 <div class="form-group">
                     <label for="kategori">Kategori</label>
                     <select class="custom-select mr-sm-2  @error('kategori') is-invalid @enderror" name="kategori">
                         <option value="Bahan Dapur">Bahan Dapur</option>
                         <option value="Perlengkapan Mandi">Perlengkapan Mandi</option>
-                        <option value="Perlengkapan Mandi">Makanan Instan</option>
+                        <option value="Makanan Instan">Makanan Instan</option>
                     </select>
                 </div>
                 <div class="form-group">

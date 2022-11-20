@@ -112,5 +112,33 @@ class DiskonController extends Controller
         $pdf = PDF::loadView('AdminView.cetakDataDiskon',['dataDiskon' => $dataDiskon]);
         return $pdf->download('Data Diskon.pdf');
     }
+
+    public function cartdiskon()
+    {
+        return view('HomePage.shoppingcartdiskon', ['tittle' => 'Keranjang Belanja']);
+    }
+
+    public function addToCartDiskon($id)
+    {
+        $diskon = Diskon::findOrFail($id);
+        
+        $cartdiskon = session()->get('cartdiskon', []);
+  
+        if(isset($cartdiskon[$id])) {
+            $cartdiskon[$id]['quantity']++;
+        } else {
+            $cartdiskon[$id] = [
+                "id" => $id,
+                "product" => $diskon->product,
+                "quantity" => 1,
+                "kategori" => $diskon->kategori,
+                "harga" => $diskon->harga,
+                "gambar" => $diskon->gambar
+            ];
+        }
+          
+        session()->put('cartdiskon', $cartdiskon);
+        return redirect()->back()->with('success', 'Product added to cart successfully!');
+    }
 }
 

@@ -25,6 +25,7 @@ class PurchaseController extends Controller
             'note' => 'required',
             'product' => 'required',
             'user'=>'required',
+            'region'=>'required',
         ]);
 
         $transaksi = new Transaksi();
@@ -33,6 +34,7 @@ class PurchaseController extends Controller
         $transaksi->note = $request->note;
         $transaksi->user_id = $request->user;
         $transaksi->product_id = $request->product;
+        $transaksi->region_id = $request->region;
        
         $transaksi->save();
 

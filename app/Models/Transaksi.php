@@ -26,5 +26,11 @@ class Transaksi extends Model
     public function products(){
         return $this->belongsTo('App\Models\Product', 'product_id');
     }
+
+    //one to many from region to transaksi
+    public function region(){
+    	return $this->belongsTo('App\Models\Region', 'region_id');
+    }
+
 }
 

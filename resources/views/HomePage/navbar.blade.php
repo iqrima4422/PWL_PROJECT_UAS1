@@ -9,15 +9,7 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="{{ route('HomePage') }} " class="nav-link {{ ($tittle === "Home Page") ? 'active' : ''}}" class="nav-link">Home</a>
       </li>
-      <!-- <div class="dropdown">
-        <button class="btn b dropdown-toggle" type="" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-          Shop
-        </button>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="{{ route('shopingCart') }} " class="nav-link {{ ($tittle === "Checkout Page ") ? 'active' : ''}}" class="nav-link">Shoping Cart</a>
-            <a class="dropdown-item" href="{{ route('CheckoutPage') }} " class="nav-link {{ ($tittle === " Shoping Card | Shop ") ? 'active' : ''}}" class="nav-link">Check Out</a>
-          </div>
-        </div> -->
+    
       
       <li class="nav-item d-none d-sm-inline-block">
       <a href="{{ route('ContactPage') }} " class="nav-link {{ ($tittle === "Contact Page") ? 'active' : ''}}" class="nav-link">Contact</a>
@@ -31,19 +23,26 @@
       <!-- Notifications Dropdown Menu -->
       <div class="dropdown">
                 <button type="button" class="btn btn-info" data-toggle="dropdown">
-                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> Keranjang <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> Keranjang <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) + count((array) session('cartdiskon'))}}</span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                     <div class="row total-header-section">
                         <div class="col-lg-6 col-sm-6 col-6">
-                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) + count((array) session('cartdiskon'))}}</span>
                         </div>
-                        @php $total = 0 @endphp
+                        @php $total1 = 0 @endphp
                         @foreach((array) session('cart') as $id => $details)
-                            @php $total += $details['harga'] * $details['quantity'] @endphp
+                            @php $total1 += $details['harga'] * $details['quantity'] @endphp
                         @endforeach
+                        
+                        <!-- carddiskon -->
+                        @php $total2 = 0 @endphp
+                        @foreach((array) session('cartdiskon') as $id => $details)
+                            @php $total2 += $details['harga'] * $details['quantity'] @endphp
+                        @endforeach
+                        
                         <div class="col-lg-6 col-sm-6 col-6 total-section text-right">
-                            <p>Total: <span class="text-info">Rp. {{ $total }}</span></p>
+                            <p>Total: <span class="text-info">Rp. {{ $total1 + $total2 }}</span></p>
                         </div>
                     </div>
                     @if(session('cart'))
@@ -60,6 +59,24 @@
                             </div>
                         @endforeach
                     @endif
+
+                    
+                    @if(session('cartdiskon'))
+                        @foreach(session('cartdiskon') as $id => $details)
+                            <div class="row cart-detail">
+                                <div class="col-lg-4 col-sm-4 col-4 cart-detail-img">
+                                    <img src="{{'storage/'. $details['gambar'] }}" />
+                                </div>
+                                <div class="col-lg-6 col-sm-6 col-6 cart-detail-product">
+                                    <p>{{ $details['product'] }}</p>
+                                    <span class="price text-info"> ${{ $details['harga'] }}</span> <br>
+                                    <span class="count"> Quantity:{{ $details['quantity'] }}</span>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
+
+
                     <div class="row">
                         <!-- <div class="text-center checkout"> -->
                             <a href="{{ route('Cart') }}" class="btn btn-primary btn-block">Tampilkan semua</a>

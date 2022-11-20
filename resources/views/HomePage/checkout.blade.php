@@ -22,9 +22,21 @@
                                 </div>
                             </div>
                             <div class="checkout__input">
-                                <p>Alamat<span>*</span></p>
+                                <p>Alamat Pembeli<span>*</span></p>
                                 <input type="text" name="alamat" placeholder="Alamat" value="{{auth()->user()->alamat}}">
                             </div>
+
+                            <div class="row">
+                            <div class="form-group">
+                                <label for="region">Alamat Pengiriman Barang (COD)</label>
+                                <select name="region" class="form-control" data-placeholder="Select">
+                                    @foreach ($region as $region) 
+                                        <option value="{{ $region->id }}">{{ $region->alamat_cod }}</option>    
+                                    @endforeach
+                                </select>
+                            </div>
+                            </div>
+
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
@@ -32,6 +44,7 @@
                                         <input type="text" name="telepon" placeholder="Telepon" value="{{auth()->user()->notelp}}">
                                     </div>
                                 </div>
+
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Email<span>*</span></p>
@@ -41,7 +54,7 @@
                             </div>
                         
                             <div class="checkout__input">
-                                <p>Order notes<span>*</span></p>
+                                <p>Order notes<span></span></p>
                                 <input type="text" name="notes" placeholder="Order Notes">
                             </div>
                         </div>
@@ -55,13 +68,18 @@
                                         <li>{{$produk->product}} x  {{$cart[$produk->id]['quantity']}} <span>{{$produk->harga}}</span></li>
                                     @endforeach
                                 </ul>
+                                <ul>
+                                    @foreach ($diskon as $diskon)
+                                        <li>{{$diskon->product}} x  {{$cartdiskon[$diskon->id]['quantity']}} <span>{{$diskon->harga}}</span></li>
+                                    @endforeach
+                                </ul>
                                 <div class="checkout__order__total">Total <span name="total">{{$total}}</span></div>
                                 <div class="checkout__input__checkbox">
                                     
                                 </div>
-                                <p style="color: black;">Setiap pemesanan barang yang dibeli hanya hanya melayani pembayaran non-tunai</p>
+                                <p style="color: black;">Setiap pemesanan barang yang dibeli hanya hanya melayani pembayaran tunai</p>
                                 
-                                <button type="submit" class="site-btn">PLACE ORDER</button>
+                                <button type="submit" class="site-btn">Pesan Sekarang</button>
                             </div>
                         </div>
                     </div>

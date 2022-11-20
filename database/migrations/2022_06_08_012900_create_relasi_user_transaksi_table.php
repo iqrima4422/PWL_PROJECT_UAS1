@@ -16,10 +16,10 @@ class CreateRelasiUserTransaksiTable extends Migration
         Schema::table ('transaksi', function (Blueprint $table) {
             //foreign key from table user
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users');
            //foreign key from table barang
             $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('products');
         });
     }
 

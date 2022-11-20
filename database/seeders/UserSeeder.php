@@ -24,7 +24,8 @@ class UserSeeder extends Seeder
                 'notelp' => '081234567890',
                 'alamat' => 'Jl. Raya Sukabumi',
                 'created_at' => now(),
-            ]
+            ],
+            
         ]);
     }
 }

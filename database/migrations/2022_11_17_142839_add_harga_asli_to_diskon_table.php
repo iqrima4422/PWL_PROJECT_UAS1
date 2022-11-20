@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSupplierDiskonTable extends Migration
+class AddHargaAsliToDiskonTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class CreateSupplierDiskonTable extends Migration
      */
     public function up()
     {
-        Schema::table ('diskon', function (Blueprint $table) {
-            $table->unsignedBigInteger('supplier_id');
-            $table->foreign('supplier_id')->references('id')->on('suppliers');
+        Schema::table('diskon', function (Blueprint $table) {
+            $table->integer('harga_asli');
         });
     }
 
@@ -26,6 +25,8 @@ class CreateSupplierDiskonTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('supplier_diskon');
+        Schema::table('diskon', function (Blueprint $table) {
+            $table->dropColumn('harga_asli');
+        });
     }
 }

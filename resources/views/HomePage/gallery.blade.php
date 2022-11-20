@@ -30,103 +30,27 @@
                     <div class="product__discount">
                         <div class="section-title product__discount__title">
                             <h2>Produk Diskon 20%</h2>
-                        </div>
-                        
-
-                        <div class="row">
+                        </div>          
+                     
+                        <div class="row">      
                             <div class="product__discount__slider owl-carousel">
+                                @foreach ($dataDiskon as $d)
                                 <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg"
-                                        data-setbg="{{asset('img/categories/sania.png')}}">
-                                            <div class="product__discount__percent">Tersedia</div>
-                                            <!-- <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul> -->
+                                   <div class="product__discount__item">
+                                        <div class="product__discount__item__pic set-bg"data-setbg="{{'storage/'.$d->gambar}}">
+                                            <div class="product__discount__percent">20%</div>
                                         </div>
                                         <div class="product__discount__item__text">
-                                            <span>Bahan Dapur</span>
-                                            <h5><a href="">Minyak Goreng Sania</a></h5>
-                                            <div class="product__item__price">Rp. 40.000 <span>Rp. 50.000</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg"
-                                            data-setbg="{{asset('img/categories/dettol.png')}}">
-                                            <div class="product__discount__percent">Habis</div>
-                                            <!-- <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul> -->
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>Perlengkapan Mandi</span>
-                                            <h5><a href="#">Sabun Cair Dettol</a></h5>
-                                            <div class="product__item__price">Rp. 14.400  <span>Rp. 18.0000</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg"
-                                            data-setbg="{{asset('img/categories/dettol2.png')}}">
-                                            <div class="product__discount__percent">Habis</div>
-                                            <!-- <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul> -->
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>Perlengkapan Mandi</span>
-                                            <h5><a href="#">Sabun Batang Dettol</a></h5>
-                                            <div class="product__item__price">Rp. 7.000 <span>Rp. 10.000</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg"
-                                            data-setbg="{{asset('img/categories/kecap.png')}}">
-                                            <div class="product__discount__percent">Habis</div>
-                                            <!-- <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul> -->
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>Bahan Dapur</span>
-                                            <h5><a href="#">Kecap ABC</a></h5>
-                                            <div class="product__item__price">Rp. 20.000 <span>Rp. 25.000</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg"
-                                            data-setbg="{{asset('img/categories/miekuah.png')}}">
-                                            <div class="product__discount__percent">Habis</div>
-                                            <!-- <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul> -->
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>Makanan Instan</span>
-                                            <h5><a href="#">Mie Kuah</a></h5>
-                                            <div class="product__item__price">Rp. 3.000 <span>Rp. 5.000</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                            <span>{{$d ->kategori}}</span>
+                                            <h5><a href="{{ route('AddCartDiskon', $d->id) }}">{{$d ->merk}}</a></h5>
+                                            <div class="product__item__price">Rp. {{$d ->harga}} <span>Rp. {{$d ->harga_asli}}</span></div>
+                                        </div>     
+                                    </div>  
+                                </div> 
+                                @endforeach  
+                            </div>  
                         </div>
+                       
                     </div>
 
                     <div class="filter__item">
@@ -163,7 +87,7 @@
                                     <span>{{$g ->merk}}</span>
                                     <h5>{{$g ->harga}}</h5>
                                 </div>
-                                 <p class="btn-holder"><a href=" {{ route('AddCart', $g->id) }}" class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p>
+                                 <p class="btn-holder"><a href=" {{ route('AddCart', $g->id) }}" class="btn btn-warning btn-block text-center" role="button">Masukkan Keranjang</a> </p>
                               </div>
                             </div> 
                         </div>   

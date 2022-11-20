@@ -113,6 +113,12 @@ Route::middleware(['auth','cekLevel:user'])->group(function () {
 
     Route::post('/postCheckout', [HomePageController::class, 'postCheckOut']) -> name('PostCheckout');
 
+    
+    // Route::get('/cartdiskon', [HomePageController::class, 'cartdiskon'])->name('CartDiskon');
+    Route::get('/addcartdiskon/{id}', [DiskonController::class, 'addToCartDiskon'])->name('AddCartDiskon');
+
+    
+
     Route::get('/purchase', [HomePageController::class, 'purchaseHistory']) -> name('PurchasePage');
     Route::get('/editDataPurchase/{id}', [PurchaseController::class, 'editDataPurchase']) -> name('EditPurchase');
     Route::post('/postUpdatePurchase/{id}', [PurchaseController::class, 'store']) -> name('PostUpdatePurchase');

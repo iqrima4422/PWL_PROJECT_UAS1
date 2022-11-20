@@ -21,7 +21,9 @@ class DiskonSeeder extends Seeder
                 'stok' => '10',
                 'harga' => 40000,
                 'gambar' =>'img/categories/sania.png',
-                'supplier_id' => '1'
+                'supplier_id' => 1,
+                'harga_asli' => '50000',
+                
             ],
             [
                 'product' => 'Sabun Mandi',
@@ -30,7 +32,8 @@ class DiskonSeeder extends Seeder
                 'stok' => '10',
                 'harga' => 14400,
                 'gambar' =>'img/categories/dettol.png',
-                'supplier_id' => '2'
+                'supplier_id' => 2,
+                'harga_asli' => '18000',
             ],
             [
                 'product' => 'Sabun Mandi',
@@ -39,25 +42,28 @@ class DiskonSeeder extends Seeder
                 'stok' => '10',
                 'harga' => 7000,
                 'gambar' =>'img/categories/dettol2.png',
-                'supplier_id' => '2'
+                'supplier_id' => 2,
+                'harga_asli' => '10000',
             ],
             [
-                'product' => 'Kecap ',
+                'product' => 'Kecap Manis ',
                 'kategori' => 'Bahan Dapur',
                 'merk' => 'Kecap ABC',
                 'stok' => '10',
                 'harga' => 20000,
                 'gambar' =>'img/featured/kecap.png',
-                'supplier_id' => '1'
+                'supplier_id' => 1,
+                'harga_asli' => '25000'
             ],
             [
                 'product' => 'Mie Instan Kuah ',
                 'kategori' => 'Makanan Instan',
                 'merk' => 'Indomie',
                 'stok' => '10',
-                'harga' => 3000,
+                'harga' => 2800,
                 'gambar' =>'img/featured/miekuah.png',
-                'supplier_id' => '1'
+                'supplier_id' => 1,
+                'harga_asli' => '3500'
             ]
         ]);
     }

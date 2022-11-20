@@ -199,6 +199,7 @@ $(document).ready(function(){
                         <th>Quantity</th>
                         <th>Tanggal Beli</th>
                         <th>Total</th>
+                        <th>Alamat COD</th>
                         <th>Note</th>
                         <th>Action</th>
                     </tr>
@@ -208,10 +209,11 @@ $(document).ready(function(){
                         <tr>
                             <td> {{$p->transaksi->id}}</td>
                             <td> {{$p->transaksi->products->product}}
-                            <td> {{$p->Transaksi->products->harga}}</td>
+                            <td> {{$p->transaksi->products->harga}}</td>
                             <td> {{$p->transaksi->qty}}</td>                                   
                             <td> {{$p->transaksi->Tanggal_beli}}</td>
                             <td> {{$p->total_bayar}}</td>
+                            <td> {{$p->transaksi->alamat_cod}}</td>
                             <td> {{$p->transaksi->note}}</td>
                             <td>
                                 <a href="{{ route('EditPurchase', $p->transaksi->id) }}" class="btn btn-md btn-warning">Edit</a>

@@ -5,6 +5,9 @@ use App\Models\Product;
 use App\Models\User;
 use App\Models\Transaksi;
 use App\Models\Payment;
+use App\Models\Supplier;
+use App\Models\Region;
+use App\Models\Diskon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,8 +29,8 @@ class HomePageController extends Controller
     {
         $data1 = Product::all();
         $total = Product::count();
-        return view ('HomePage.gallery',['galeri' => $data1],['tittle' => 'Gallery Page',
-        'total' => $total]);
+        $dataDiskon = Diskon::with('suppliers')->orderBy('id', 'asc')->paginate(5);
+        return view ('HomePage.gallery',['galeri' => $data1],['tittle' => 'Gallery Page','dataDiskon' => $dataDiskon,'total' => $total]);
     }
 
     function gallerySort(Request $request)
@@ -97,7 +100,7 @@ class HomePageController extends Controller
     // function shopingcart()
     public function cart()
     {
-        return view('HomePage.shoppingcart', ['tittle' => 'Shoping Card | Shop']);
+        return view('HomePage.shoppingcart', ['tittle' => 'Keranjang Belanja']);
     }
 
     public function addToCart($id)
@@ -157,17 +160,33 @@ class HomePageController extends Controller
 
     public function checkout()
     {
+        $region = Region::all();
+
         //get id from cart
         $cart = session()->get('cart');
         $id = array_keys($cart);
         //get product from id
         $products = Product::find($id);
-        $total = 0;
+        $total1 = 0;
+
+        //get id from cartdiskon
+        $cartdiskon = session()->get('cartdiskon');
+        $id = array_keys($cartdiskon);
+        //get product from id
+        $diskon = Diskon::find($id);
+        $total2 = 0;
         foreach($products as $product){
-            $total += $cart[$product->id]['quantity'] * $product->harga;
+            $total1 += $cart[$product->id]['quantity'] * $product->harga;
+        }
+        foreach($diskon as $productd){
+            $total2 += $cartdiskon[$productd->id]['quantity'] * $productd->harga;
         }
         $kuantitas = array_sum(array_column($cart, 'quantity'));
-        return view('HomePage.checkout', ['tittle' => 'Checkout Page', 'produk' => $products, 'total' => $total, 'cart' => $cart, 'kuantitas' => $kuantitas]);
+        return view('HomePage.checkout', ['tittle' => 'Checkout Page', 'produk' => $products, 'diskon'=> $diskon, 'total' => $total1 + $total2, 'cart' => $cart, 'cartdiskon' => $cartdiskon, 'kuantitas' => $kuantitas,
+        'region' => $region]);
+
+
+
     }
 
     public function searchProduct(Request $request)

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSupplierDiskonTable extends Migration
+class CreateRelasiRegionTransaksiTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateSupplierDiskonTable extends Migration
      */
     public function up()
     {
-        Schema::table ('diskon', function (Blueprint $table) {
-            $table->unsignedBigInteger('supplier_id');
-            $table->foreign('supplier_id')->references('id')->on('suppliers');
+        Schema::table ('transaksi', function (Blueprint $table) {
+            $table->unsignedBigInteger('region_id');
+            $table->foreign('region_id')->references('id')->on('region')->onDelete('cascade');
         });
     }
 
@@ -26,6 +26,6 @@ class CreateSupplierDiskonTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('supplier_diskon');
+        Schema::dropIfExists('relasi_region_transaksi');
     }
 }
