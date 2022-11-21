@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Product;
 use App\Models\User;
 use App\Models\Transaksi;
@@ -16,13 +17,14 @@ class HomePageController extends Controller
     function index()
     {
         $data = Product::all();
-        return view('HomePage.index',['barang' => $data],['tittle' => 'Home Page',
+        return view('HomePage.index', ['barang' => $data], [
+            'tittle' => 'Home Page',
         ]);
     }
 
     function profile()
     {
-        return view('HomePage.profile',[],['tittle' => 'Profile Page']);
+        return view('HomePage.profile', [], ['tittle' => 'Profile Page']);
     }
 
     function gallery()
@@ -30,33 +32,35 @@ class HomePageController extends Controller
         $data1 = Product::all();
         $total = Product::count();
         $dataDiskon = Diskon::with('suppliers')->orderBy('id', 'asc')->paginate(5);
-        return view ('HomePage.gallery',['galeri' => $data1],['tittle' => 'Gallery Page','dataDiskon' => $dataDiskon,'total' => $total]);
+        return view('HomePage.gallery', ['galeri' => $data1], ['tittle' => 'Gallery Page', 'dataDiskon' => $dataDiskon, 'total' => $total]);
     }
 
     function gallerySort(Request $request)
     {
         $data1 = Product::orderBy($request->sorting, 'asc')->get();
         $total = Product::count();
-        return view ('HomePage.gallery',['galeri' => $data1],['tittle' => 'Gallery Page',
-        'total' => $total]);
+        return view('HomePage.gallery', ['galeri' => $data1], [
+            'tittle' => 'Gallery Page',
+            'total' => $total
+        ]);
     }
 
 
     function contact()
     {
         return view('HomePage.contact', ['tittle' => 'Contact Page']);
-    }   
+    }
 
     function updateDataUser(Request $request)
-    {   
+    {
         //validate laravel
-        $this->validate($request,[
-            'email' => 'email|unique:users,email,'.Auth::user()->id,
-            'notelp' => 'numeric|unique:users,notelp,'.Auth::user()->id,
+        $this->validate($request, [
+            'email' => 'email|unique:users,email,' . Auth::user()->id,
+            'notelp' => 'numeric|unique:users,notelp,' . Auth::user()->id,
             'foto' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        if($request -> hasFile('foto')){
+        if ($request->hasFile('foto')) {
             $foto = $request->file('foto')->store('photoUser', 'public');
             $user = User::find(Auth::user()->id);
             $user->name = $request->name;
@@ -65,7 +69,7 @@ class HomePageController extends Controller
             $user->notelp = $request->notelp;
             $user->alamat = $request->alamat;
             $user->save();
-            return redirect('/profile') -> with('success', 'Data berhasil diubah');
+            return redirect('/profile')->with('success', 'Data berhasil diubah');
         } else {
             $user = User::find(Auth::user()->id);
             $user->name = $request->name;
@@ -73,29 +77,29 @@ class HomePageController extends Controller
             $user->notelp = $request->notelp;
             $user->alamat = $request->alamat;
             $user->save();
-            return redirect('/profile') -> with('success', 'Data berhasil diubah');
+            return redirect('/profile')->with('success', 'Data berhasil diubah');
         }
     }
 
     function updateDataPassword(Request $request)
     {
         //validate laravel
-        $this->validate($request,[
-            'currentpassword'=> 'required|current_password|min:8|',
+        $this->validate($request, [
+            'currentpassword' => 'required|current_password|min:8|',
             'password' => 'required|min:8|confirmed',
         ]);
 
         $user = User::find(Auth::user()->id);
         $user->password = bcrypt($request->password);
         $user->save();
-        return redirect('/profile') -> with('success', 'Password berhasil diubah');
+        return redirect('/profile')->with('success', 'Password berhasil diubah');
     }
 
-    
+
     function shopingcart()
     {
         return view('HomePage.shoppingcart', ['tittle' => 'Shoping Card | Shop']);
-    } 
+    }
 
     // function shopingcart()
     public function cart()
@@ -106,10 +110,10 @@ class HomePageController extends Controller
     public function addToCart($id)
     {
         $product = Product::findOrFail($id);
-        
+
         $cart = session()->get('cart', []);
-  
-        if(isset($cart[$id])) {
+
+        if (isset($cart[$id])) {
             $cart[$id]['quantity']++;
         } else {
             $cart[$id] = [
@@ -121,11 +125,11 @@ class HomePageController extends Controller
                 "gambar" => $product->gambar
             ];
         }
-          
+
         session()->put('cart', $cart);
         return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
-  
+
     /**
      * Write code on Method
      *
@@ -133,14 +137,14 @@ class HomePageController extends Controller
      */
     public function update(Request $request)
     {
-        if($request->id && $request->quantity){
+        if ($request->id && $request->quantity) {
             $cart = session()->get('cart');
             $cart[$request->id]["quantity"] = $request->quantity;
             session()->put('cart', $cart);
             session()->flash('success', 'Cart updated successfully');
         }
     }
-  
+
     /**
      * Write code on Method
      *
@@ -148,9 +152,9 @@ class HomePageController extends Controller
      */
     public function remove(Request $request)
     {
-        if($request->id){
+        if ($request->id) {
             $cart = session()->get('cart');
-            if(isset($cart[$request->id])){
+            if (isset($cart[$request->id])) {
                 unset($cart[$request->id]);
                 session()->put('cart', $cart);
                 session()->flash('success', 'Product removed successfully');
@@ -175,27 +179,29 @@ class HomePageController extends Controller
         //get product from id
         $diskon = Diskon::find($id);
         $total2 = 0;
-        foreach($products as $product){
+        foreach ($products as $product) {
             $total1 += $cart[$product->id]['quantity'] * $product->harga;
         }
-        foreach($diskon as $productd){
+        foreach ($diskon as $productd) {
             $total2 += $cartdiskon[$productd->id]['quantity'] * $productd->harga;
         }
         $kuantitas = array_sum(array_column($cart, 'quantity'));
-        return view('HomePage.checkout', ['tittle' => 'Checkout Page', 'produk' => $products, 'diskon'=> $diskon, 'total' => $total1 + $total2, 'cart' => $cart, 'cartdiskon' => $cartdiskon, 'kuantitas' => $kuantitas,
-        'regions' => $region]);
-
-
-
+        return view('HomePage.checkout', [
+            'tittle' => 'Checkout Page', 'produk' => $products,
+            'diskon' => $diskon, 'total' => $total1 + $total2,
+            'cart' => $cart, 'cartdiskon' => $cartdiskon,
+            'kuantitas' => $kuantitas, 'regions' => $region
+        ]);
     }
 
     public function searchProduct(Request $request)
     {
-        $data = Product::where('product', 'like', '%'.$request->cari.'%')->get();
+        $data = Product::where('product', 'like', '%' . $request->cari . '%')->get();
         return view('HomePage.search', ['tittle' => 'Search Page', 'barang' => $data]);
     }
 
-    public function purchase(){
+    public function purchase()
+    {
         return view('HomePage.purchase', ['tittle' => 'Purchase Page']);
     }
 
@@ -203,8 +209,8 @@ class HomePageController extends Controller
     {
         $cart = session()->get('cart');
         $cartdiskon = session()->get('cartdiskon');
-        
-        foreach($cart as $item){
+
+        foreach ($cart as $item) {
             $transaksi = new Transaksi();
             $transaksi->user_id = Auth::user()->id;
             $transaksi->product_id = $item['id'];
@@ -226,7 +232,7 @@ class HomePageController extends Controller
             $product->save();
         }
 
-        foreach($cartdiskon as $item){
+        foreach ($cartdiskon as $item) {
             $transaksi = new Transaksi();
             $transaksi->user_id = Auth::user()->id;
             $transaksi->product_id = $item['id'];
