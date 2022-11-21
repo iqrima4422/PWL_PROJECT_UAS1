@@ -206,7 +206,7 @@ class HomePageController extends Controller
     {
         $data = Product::where('product', 'like', '%' . $request->cari . '%')->get();
         $data2 = Diskon::where('product', 'like', '%' . $request->cari . '%')->get();
-        return view('HomePage.search', ['tittle' => 'Search Page', 'barang' => $data, $data2]);
+        return view('HomePage.search', ['tittle' => 'Search Page', 'barang' => $data, 'barangdiskon'=>$data2]);
     }
 
     public function purchase()

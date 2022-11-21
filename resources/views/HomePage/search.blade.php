@@ -44,6 +44,25 @@
     </div>   
     @endforeach 
 </div>
+
+<div class="row">
+    @foreach ($barangdiskon as $b)
+    <div class="col-lg-4 col-md-6 col-sm-6 mix dapur mandi instan">
+        <div class="featured__item">
+            <div class="featured__item__pic set-bg" data-setbg="{{'storage/'.$b->gambar}}"></div>
+            <div class="featured__item__text">
+            <div class="product__discount__item__text">
+                  <span>{{$b ->kategori}}</span>
+                  <h6><a href="#">{{$b ->product}}</a></h6>
+                  <span>{{$b ->merk}}</span>
+                  <h5>{{$b ->harga}}</h5>
+            </div>
+            <p class="btn-holder"><a href=" {{ route('AddCartDiskon', $b->id) }}" class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p>
+            </div>
+        </div> 
+    </div>   
+    @endforeach 
+</div>
 <button class="btn btn-primary"  onclick="history.back()"><i class="bi bi-arrow-return-left"></i> Kembali</button>
 </div>
 
