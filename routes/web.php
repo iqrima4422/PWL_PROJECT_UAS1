@@ -105,6 +105,9 @@ Route::middleware(['auth','cekLevel:user'])->group(function () {
     Route::get('/gallery', [HomePageController::class, 'gallery']) -> name('GalleryPage'); 
     Route::get('/cart', [HomePageController::class, 'cart'])->name('Cart');
     Route::get('/addcart/{id}', [HomePageController::class, 'addToCart'])->name('AddCart');
+
+    Route::get('/addcartdiskon/{id}', [HomePageController::class, 'addToCartDiskon'])->name('AddCartDiskon');
+
     Route::delete('/removecart', [HomePageController::class, 'remove'])->name('Removecart');
     Route::patch('/updatecart', [HomePageController::class, 'update'])->name('Updatecart');
     Route::get('/checkout', [HomePageController::class, 'checkout']) -> name('CheckoutPage');
@@ -115,7 +118,7 @@ Route::middleware(['auth','cekLevel:user'])->group(function () {
 
     
     // Route::get('/cartdiskon', [HomePageController::class, 'cartdiskon'])->name('CartDiskon');
-    Route::get('/addcartdiskon/{id}', [DiskonController::class, 'addToCartDiskon'])->name('AddCartDiskon');
+    // Route::get('/addcartdiskon/{id}', [DiskonController::class, 'addToCartDiskon'])->name('AddCartDiskon');
 
     
 

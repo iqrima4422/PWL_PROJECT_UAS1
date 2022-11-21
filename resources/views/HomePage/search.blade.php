@@ -43,11 +43,9 @@
         </div> 
     </div>   
     @endforeach 
-</div>
 
-<div class="row">
     @foreach ($barangdiskon as $b)
-    <div class="col-lg-4 col-md-6 col-sm-6 mix dapur mandi instan">
+    <div class="col-lg-4 col-md-4 col-sm-4 mix dapur mandi instan">
         <div class="featured__item">
             <div class="featured__item__pic set-bg" data-setbg="{{'storage/'.$b->gambar}}"></div>
             <div class="featured__item__text">
