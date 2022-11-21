@@ -51,14 +51,14 @@
           <a href="{{ route('PurchasePage') }}" class="nav-link {{ ($tittle === "Purchase Page") ? 'active' : ''}}">
             <i class="bi bi-receipt"></i>
               <p>
-               Pembelian
+               Pembelian Anda
               </p>
             </a>
           </li>
           <li class="nav-item bg-danger">
             <a href="{{ route('logout') }}" class="nav-link">
               <i class="bi bi-box-arrow-in-left"></i>
-              <p>Logout</p>
+              <p>Keuar</p>
             </a>
           </li>
         </ul>

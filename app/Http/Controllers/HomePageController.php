@@ -160,6 +160,14 @@ class HomePageController extends Controller
                 session()->flash('success', 'Product removed successfully');
             }
         }
+        if ($request->id) {
+            $cartdiskon = session()->get('cartdiskon');
+            if (isset($cartdiskon[$request->id])) {
+                unset($cartdiskon[$request->id]);
+                session()->put('cartdiskon', $cartdiskon);
+                session()->flash('success', 'Product removed successfully');
+            }
+        }
     }
 
     public function checkout()
@@ -197,7 +205,8 @@ class HomePageController extends Controller
     public function searchProduct(Request $request)
     {
         $data = Product::where('product', 'like', '%' . $request->cari . '%')->get();
-        return view('HomePage.search', ['tittle' => 'Search Page', 'barang' => $data]);
+        $data2 = Diskon::where('product', 'like', '%' . $request->cari . '%')->get();
+        return view('HomePage.search', ['tittle' => 'Search Page', 'barang' => $data, $data2]);
     }
 
     public function purchase()
