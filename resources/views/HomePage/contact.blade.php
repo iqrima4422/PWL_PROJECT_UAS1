@@ -64,7 +64,7 @@
                     <div class="contact__widget">
                         <span class="bi bi-envelope-open"></span>
                         <h4>Email</h4>
-                        <p>hellobarokahllers@colorlib.com</p>
+                        <p>hellobarokahllers@gmail.com</p>
                     </div>
                 </div>
             </div>

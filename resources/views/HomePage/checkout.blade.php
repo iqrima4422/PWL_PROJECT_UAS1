@@ -5,7 +5,6 @@
     <section class="checkout spad">
         <div class="container">
             <div class="row">
-                
             </div>
             <div class="checkout__form">
                 <h4>Detail Tagihan Pembayaran</h4>
@@ -28,9 +27,9 @@
 
                             <div class="row">
                             <div class="form-group">
-                                <label for="region">Pilih Alamat Pengiriman Barang (COD)<span>*</span></label>
+                                <label for="region">Alamat Pengiriman Barang (COD)<span>*</span></label>
                                 <select name="region" class="form-control">
-                                    @foreach ($region as $region) 
+                                    @foreach ($regions as $region) 
                                         <option value="{{ $region->id }}">{{ $region->alamat_cod }}</option>    
                                     @endforeach
                                 </select>
@@ -99,6 +98,7 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 
 

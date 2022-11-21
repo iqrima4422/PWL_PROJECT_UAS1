@@ -42,9 +42,10 @@
         <div class="row text-jusfity">
                 <h1 style="color:green;" class="h1" >Tentang Toko Sembako Barokah</h1>
                 <p style="color:black;">
-                Toko Kelontong Barokah merupakan toko yang menjual aneka macam barang sembako dan kebutuhan sehari-hari, seperti; gula, beras, telur, tepung dan lain sebagainya. 
+                Toko Kelontong Barokah merupakan toko yang menjual aneka macam barang sembako dan kebutuhan sehari-hari, seperti gula, beras, telur, tepung dan lain sebagainya. 
                 Melayani transaksi yang cukup besar disetiap harinya. Barang yanag dijual terjamin 100% Halal. 
-                Sistem penjualan pada Toko Kelontong Barokah ini hanya melayani pengiriman Cash On Delivery (COD).
+                Sistem penjualan pada Toko Kelontong Barokah ini hanya melayani pengiriman Cash On Delivery (COD). Pengiriman barang dapat dilakukan khusus untuk area <b>Probolinggo</b>.
+
                 </p> 
         </div>
         

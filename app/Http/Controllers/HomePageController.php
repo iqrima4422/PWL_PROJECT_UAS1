@@ -161,7 +161,7 @@ class HomePageController extends Controller
     public function checkout()
     {
         $region = Region::all();
-
+        // return dd($region);
         //get id from cart
         $cart = session()->get('cart');
         $id = array_keys($cart);
@@ -183,7 +183,7 @@ class HomePageController extends Controller
         }
         $kuantitas = array_sum(array_column($cart, 'quantity'));
         return view('HomePage.checkout', ['tittle' => 'Checkout Page', 'produk' => $products, 'diskon'=> $diskon, 'total' => $total1 + $total2, 'cart' => $cart, 'cartdiskon' => $cartdiskon, 'kuantitas' => $kuantitas,
-        'region' => $region]);
+        'regions' => $region]);
 
 
 
