@@ -5,9 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
-
 
 <div class="content-header">
     <div class="container-fluid">
@@ -87,6 +84,32 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="categories__item set-bg" data-setbg="">
+            <img src="{{asset('img/categories/sabun.png')}}" style="width: 100%; height: 100%">
+            <h5><a href="#">Sabun</a></h5>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="categories__item set-bg">
+            <img src="{{asset('img/categories/gula.png')}}" style="width: 100%; height: 100%">
+            <h5><a href="#">Gula</a></h5>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="categories__item set-bg">
+            <img src="{{asset('img/categories/tepung.png')}}" style="width: 100%; height: 100%">
+            <h5><a href="#">Tepung</a></h5>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="categories__item set-bg">
+            <img src="{{asset('img/categories/telur.png')}}" style="width: 100%; height: 100%">
+            <h5><a href="#">Telur</a></h5>
+        </div>
+    </div>
+    </div>
     </div>
 </section>
 <!-- Categories Section End -->
@@ -214,6 +237,7 @@
 
             </div>
         </div>
+    </div>
     </div>
 </section>
 

@@ -110,7 +110,7 @@ Route::middleware(['auth','cekLevel:user'])->group(function () {
 
     Route::delete('/removecart', [HomePageController::class, 'remove'])->name('Removecart');
     Route::patch('/updatecart', [HomePageController::class, 'update'])->name('Updatecart');
-    Route::get('/checkout', [HomePageController::class, 'checkout']) -> name('CheckoutPage');
+    // Route::get('/checkout', [HomePageController::class, 'checkout']) -> name('CheckoutPage');
     Route::get('/searchProduct', [HomePageController::class, 'searchProduct']) -> name('SearchProduct');
     Route::get('/sorting', [HomePageController::class, 'gallerySort']) -> name('Sorting');
 

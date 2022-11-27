@@ -1991,13 +1991,13 @@ pre code {
 }
 
 @media (max-width: 1199.98px) {
-  .table-responsive-xl {
+  .table-responsive-xs {
     display: block;
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
-  .table-responsive-xl > .table-bordered {
+  .table-responsive-xs > .table-bordered {
     border: 0;
   }
 }
