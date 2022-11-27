@@ -133,10 +133,10 @@ class HomePageController extends Controller
     public function addToCartDiskon($id)
     {
         $diskon = Diskon::findOrFail($id);
-        
+
         $cartdiskon = session()->get('cartdiskon', []);
-  
-        if(isset($cartdiskon[$id])) {
+
+        if (isset($cartdiskon[$id])) {
             $cartdiskon[$id]['quantity']++;
         } else {
             $cartdiskon[$id] = [
@@ -148,11 +148,11 @@ class HomePageController extends Controller
                 "gambar" => $diskon->gambar
             ];
         }
-          
+
         session()->put('cartdiskon', $cartdiskon);
         return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
-    
+
     /**
      * Write code on Method
      *
@@ -161,9 +161,9 @@ class HomePageController extends Controller
     public function update(Request $request)
     {
         if ($request->id && $request->quantity) {
-            $cart = session()->get('cart');
+            $cart = session()->get($request->session);
             $cart[$request->id]["quantity"] = $request->quantity;
-            session()->put('cart', $cart);
+            session()->put($request->session, $cart);
             session()->flash('success', 'Cart updated successfully');
         }
     }
@@ -199,37 +199,46 @@ class HomePageController extends Controller
         // return dd($region);
         //get id from cart
         $cart = session()->get('cart');
-        $id = array_keys($cart);
-        //get product from id
-        $products = Product::find($id);
         $total1 = 0;
+        $products = null;
+        $kuantitas = null;
+        if ($cart != null) {
+            $id = array_keys($cart);
+            //get product from id
+            $products = Product::find($id);
+            foreach ($products as $product) {
+                $total1 += $cart[$product->id]['quantity'] * $product->harga;
+            }
+            $kuantitas = array_sum(array_column($cart, 'quantity'));
+        }
 
         //get id from cartdiskon
         $cartdiskon = session()->get('cartdiskon');
-        $id = array_keys($cartdiskon);
-        //get product from id
-        $diskon = Diskon::find($id);
         $total2 = 0;
-        foreach ($products as $product) {
-            $total1 += $cart[$product->id]['quantity'] * $product->harga;
+        $diskon = null;
+        if ($cartdiskon != null) {
+            $id = array_keys($cartdiskon);
+            //get product from id
+            $diskon = Diskon::find($id);
+            foreach ($diskon as $productd) {
+                $total2 += $cartdiskon[$productd->id]['quantity'] * $productd->harga;
+            }
         }
-        foreach ($diskon as $productd) {
-            $total2 += $cartdiskon[$productd->id]['quantity'] * $productd->harga;
-        }
-        $kuantitas = array_sum(array_column($cart, 'quantity'));
+
         return view('HomePage.checkout', [
             'tittle' => 'Checkout Page', 'produk' => $products,
             'diskon' => $diskon, 'total' => $total1 + $total2,
             'cart' => $cart, 'cartdiskon' => $cartdiskon,
             'kuantitas' => $kuantitas, 'regions' => $region
         ]);
+        // produk, kuantitas, diskon, cart, cartdiskon
     }
 
     public function searchProduct(Request $request)
     {
         $data = Product::where('product', 'like', '%' . $request->cari . '%')->get();
         $data2 = Diskon::where('product', 'like', '%' . $request->cari . '%')->get();
-        return view('HomePage.search', ['tittle' => 'Search Page', 'barang' => $data, 'barangdiskon'=>$data2]);
+        return view('HomePage.search', ['tittle' => 'Search Page', 'barang' => $data, 'barangdiskon' => $data2]);
     }
 
     public function purchase()
@@ -241,49 +250,54 @@ class HomePageController extends Controller
     {
         $cart = session()->get('cart');
         $cartdiskon = session()->get('cartdiskon');
+        // $total1 = 0;
 
-        foreach ($cart as $item) {
-            $transaksi = new Transaksi();
-            $transaksi->user_id = Auth::user()->id;
-            $transaksi->product_id = $item['id'];
-            $transaksi->region_id = $item['id'];
-            $transaksi->qty = $item['quantity'];
-            $transaksi->Tanggal_beli = now()->format('Y-m-d');
-            $transaksi->created_at = now();
-            $transaksi->save();
+        if ($cart != null) {
+            foreach ($cart as $item) {
+                $transaksi = new Transaksi();
+                $transaksi->user_id = Auth::user()->id;
+                $transaksi->product_id = $item['id'];
+                $transaksi->region_id = $request->region;
+                $transaksi->qty = $item['quantity'];
+                $transaksi->Tanggal_beli = now()->format('Y-m-d');
+                $transaksi->created_at = now();
+                $transaksi->save();
 
-            $product = Product::find($item['id']);
-            $payment = new Payment();
-            $total1 = $cart[$product->id]['quantity'] * $product->harga;
-            $payment->total_bayar = $total1;
-            $payment->transaksi_id = $transaksi->id;
-            $payment->tanggal_bayar = now();
-            $payment->created_at = now();
-            $payment->save();
-            $product->stok = $product->stok - $cart[$product->id]['quantity'];
-            $product->save();
+                $product = Product::find($item['id']);
+                $payment = new Payment();
+                $total1 = $cart[$product->id]['quantity'] * $product->harga;
+                $payment->total_bayar = $total1;
+                $payment->transaksi_id = $transaksi->id;
+                $payment->tanggal_bayar = now();
+                $payment->created_at = now();
+                $payment->save();
+                $product->stok = $product->stok - $cart[$product->id]['quantity'];
+                $product->save();
+            }
         }
 
-        foreach ($cartdiskon as $item) {
-            $transaksi = new Transaksi();
-            $transaksi->user_id = Auth::user()->id;
-            $transaksi->product_id = $item['id'];
-            $transaksi->region_id = $item['id'];
-            $transaksi->qty = $item['quantity'];
-            $transaksi->Tanggal_beli = now()->format('Y-m-d');
-            $transaksi->created_at = now();
-            $transaksi->save();
+        if ($cartdiskon != null) {
+            foreach ($cartdiskon as $item) {
+                $transaksi = new Transaksi();
+                $transaksi->user_id = Auth::user()->id;
+                $transaksi->diskon_id = $item['id'];
+                $transaksi->region_id = $request->region;
+                $transaksi->qty = $item['quantity'];
+                $transaksi->Tanggal_beli = now()->format('Y-m-d');
+                $transaksi->created_at = now();
+                $transaksi->save();
 
-            $product = Product::find($item['id']);
-            $payment = new Payment();
-            $total2 = $cartdiskon[$product->id]['quantity'] * $product->harga;
-            $payment->total_bayar = $total1 + $total2;
-            $payment->transaksi_id = $transaksi->id;
-            $payment->tanggal_bayar = now();
-            $payment->created_at = now();
-            $payment->save();
-            $product->stok = $product->stok - $cartdiskon[$product->id]['quantity'];
-            $product->save();
+                $product = Diskon::find($item['id']);
+                $payment = new Payment();
+                $total2 = $cartdiskon[$product->id]['quantity'] * $product->harga;
+                $payment->total_bayar = $total2;
+                $payment->transaksi_id = $transaksi->id;
+                $payment->tanggal_bayar = now();
+                $payment->created_at = now();
+                $payment->save();
+                $product->stok = $product->stok - $cartdiskon[$product->id]['quantity'];
+                $product->save();
+            }
         }
 
         //destroy session

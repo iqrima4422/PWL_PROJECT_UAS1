@@ -13,12 +13,12 @@ class CreateRelasiUserTransaksiTable extends Migration
      */
     public function up()
     {
-        Schema::table ('transaksi', function (Blueprint $table) {
+        Schema::table('transaksi', function (Blueprint $table) {
             //foreign key from table user
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-           //foreign key from table barang
-            $table->unsignedBigInteger('product_id');
+            //foreign key from table barang
+            $table->unsignedBigInteger('product_id')->nullable();
             $table->foreign('product_id')->references('id')->on('products');
         });
     }

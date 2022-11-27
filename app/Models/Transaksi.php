@@ -12,8 +12,9 @@ class Transaksi extends Model
     protected $primarykey = 'id';
 
     //one to many from transaksi to user
-    public function users(){
-    	return $this->belongsTo('App\Models\User', 'user_id');
+    public function users()
+    {
+        return $this->belongsTo('App\Models\User', 'user_id');
     }
 
     //one to one from transaksi to payments
@@ -23,14 +24,20 @@ class Transaksi extends Model
     }
 
     //one to many from transaksi to product
-    public function products(){
+    public function products()
+    {
         return $this->belongsTo('App\Models\Product', 'product_id');
     }
 
-    //one to many from region to transaksi
-    public function region(){
-    	return $this->belongsTo('App\Models\Region', 'region_id');
+    //one to many from transaksi to product
+    public function diskon()
+    {
+        return $this->belongsTo('App\Models\Diskon', 'diskon_id');
     }
 
+    //one to many from region to transaksi
+    public function region()
+    {
+        return $this->belongsTo('App\Models\Region', 'region_id');
+    }
 }
-

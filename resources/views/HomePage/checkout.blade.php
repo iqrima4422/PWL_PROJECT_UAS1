@@ -72,16 +72,20 @@
 
                             <h4>Pesanan Anda</h4>
                             <div class="checkout__order__products">Barang x Qty<span>Harga Satuan</span></div>
+                            @if($cart != null)
                             <ul>
                                 @foreach ($produk as $produk)
                                 <li>{{$produk->product}} x {{$cart[$produk->id]['quantity']}} <span>{{$produk->harga}}</span></li>
                                 @endforeach
                             </ul>
+                            @endif
+                            @if($cartdiskon != null)
                             <ul>
                                 @foreach ($diskon as $diskon)
                                 <li>{{$diskon->product}} x {{$cartdiskon[$diskon->id]['quantity']}} <span>{{$diskon->harga}}</span></li>
                                 @endforeach
                             </ul>
+                            @endif
                             <div class="checkout__order__total">Total <span name="total">{{$total}}</span></div>
                             <div class="checkout__input__checkbox">
 
