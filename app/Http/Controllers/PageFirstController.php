@@ -10,7 +10,7 @@ class PageFirstController extends Controller
     
     function pageindex()
     {
-        return view('PageFirst.pagefirst',['tittle' => 'Page First']);
+        return view('PageFirst.pagefirst',['tittle' => ' Aplikasi E-Commers Barokah']);
     }
 
 }

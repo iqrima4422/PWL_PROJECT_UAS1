@@ -26,13 +26,32 @@
         <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" class="active"></li>
         <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1"></li>
         <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2"></li>
+        <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="3"></li>
     </ol>
     <div class="carousel-inner">
-        <div class="carousel-item active">
+    <div class="carousel-item active">
             <div class="container">
                 <div class="row p-5">
                     <div class="d-flex justify-content-end col-md-8 col-lg-6 order-lg-last">
-                        <img class="img-fluid" src="img/featured/bahanpokok.jpeg" style="height: 368px;" alt="">
+                        <img class="img-fluid" src="{{asset('img/featured/tokonya.png')}}" style="height: 368px;" alt="">
+                    </div>
+                    <div class="col-lg-6 mb-0 d-flex align-items-center">
+                        <div class="text-align-left">
+                            <h1 class="h1 text-success">Barokah Online</h1>
+                            <h3 class="h2">Toko Terkemuka di Probolinggo</h3>
+                            <p>
+                            Menjual Bahan Pokok Rumah Tangga 100 % Halal dan Original.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item ">
+            <div class="container">
+                <div class="row p-5">
+                    <div class="d-flex justify-content-end col-md-8 col-lg-6 order-lg-last">
+                        <img class="img-fluid" src="img/featured/bahanpokok.png" style="height: 368px;" alt="">
                     </div>
                     <div class="col-lg-6 mb-0 d-flex align-items-center">
                         <div class="text-align-left">
@@ -51,7 +70,7 @@
             <div class="container">
                 <div class="row p-5">
                     <div class="d-flex justify-content-end col-md-8 col-lg-6 order-lg-last">
-                        <img class="img-fluid" src="img/featured/sabun2.jpeg" style="height: 368px;" alt="">
+                        <img class="img-fluid" src="img/featured/sabun2.png" style="height: 368px;" alt="">
                     </div>
                     <div class="col-lg-6 mb-0 d-flex align-items-center">
                         <div class="text-align-left">
@@ -69,7 +88,7 @@
             <div class="container">
                 <div class="row p-5">
                     <div class="d-flex justify-content-end col-md-8 col-lg-6 order-lg-last">
-                        <img class="img-fluid" src="{{asset('img/featured/snack2.jpeg')}}" style="height: 368px;" alt="">
+                        <img class="img-fluid" src="{{asset('img/featured/snack31.png')}}" style="height: 368px;" alt="">
                     </div>
                     <div class="col-lg-6 mb-0 d-flex align-items-center">
                         <div class="text-align-left align-self-center">

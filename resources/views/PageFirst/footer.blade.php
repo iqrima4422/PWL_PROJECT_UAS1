@@ -1,4 +1,4 @@
-<footer class="main-footer">
+<footer class="bg-dark" id="tempaltemo_footer">
     <!-- To the right -->
     <!-- Default to the left -->
     

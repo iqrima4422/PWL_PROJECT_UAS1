@@ -10,12 +10,11 @@
                             <thead>
                                 <tr>
                                     <th>Gambar</th>
-                                    <th>Products</th>
+                                    <th>Nama Produk</th>
                                     <th>Harga</th>
                                     <th>Quantity</th>
                                     <th>Total</th>
-                                    <th>Action</th>
-                                    
+                                    <th>Action</th>    
                                 </tr>
                             </thead>
                             <tbody>
@@ -23,15 +22,16 @@
                                 @if(session('cart'))
                                     @foreach(session('cart') as $id => $details)
                                         @php $total1 += $details['harga'] * $details['quantity'] @endphp
+                                       
                                         <tr data-id="{{ $id }}">
-                                            <td data-th="Product">
-                                                <div class="row">
-                                                    <div class="col-sm-3 hidden-xs"><img src="{{'storage/'. $details['gambar'] }}" width="100" height="100" class="img-responsive"/></div>
-                                                    <div class="col-sm-9">
-                                                        <h4 class="nomargin">{{ $details['product'] }}</h4>
-                                                    </div>
-                                                </div>
+                                            <div data-th="Product">
+                                            <td>
+                                                <img src="{{'storage/'. $details['gambar'] }}" width="100" height="100" class="img-responsive"/>
                                             </td>
+                                            <td>
+                                                {{ $details['product'] }}</h4>
+                                            </td>
+                                               
                                             <td data-th="harga">Rp.{{ $details['harga'] }}</td>
                                             <td data-th="Quantity">
                                                 <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity update-cart"/>
@@ -40,6 +40,7 @@
                                             <td class="actions" data-th="">
                                                 <button class="btn btn-danger btn-sm remove-from-cart"><i class="fa fa-trash-o"></i></button>
                                             </td>
+                                        
                                         </tr>
                                     @endforeach
                                 @endif
@@ -52,13 +53,12 @@
                                         @php $total2 += $details['harga'] * $details['quantity'] @endphp
                                         <tr data-id="{{ $id }}">
                                             <td data-th="Product">
-                                                <div class="row">
-                                                    <div class="col-sm-3 hidden-xs"><img src="{{'storage/'. $details['gambar'] }}" width="100" height="100" class="img-responsive"/></div>
-                                                    <div class="col-sm-9">
-                                                        <h4 class="nomargin">{{ $details['product'] }}</h4>
-                                                    </div>
-                                                </div>
+                                                <img src="{{'storage/'. $details['gambar'] }}" width="100" height="100" class="img-responsive"/>
                                             </td>
+                                            <td>
+                                                {{ $details['product'] }}</h4>
+                                            </td>
+                                        
                                             <td data-th="harga">Rp.{{ $details['harga'] }}</td>
                                             <td data-th="Quantity">
                                                 <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity update-cart"/>
@@ -71,12 +71,9 @@
                                     @endforeach
                                 @endif
                             </tbody>
-
-
-                            <br>   </br> 
                             <tbody>
                                 <tr>
-                                    <td colspan="5" class="text-right"><h3><strong>Total {{ $total1 + $total2 }} Rupiah</strong></h3></td>
+                                    <td colspan="5" class="text-right"><h6><strong>Total {{ $total1 + $total2 }} Rupiah</strong></h6></td>
                                 </tr>
                                 <tr>
                                     <td colspan="5" class="text-right">

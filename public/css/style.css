@@ -728,7 +728,7 @@ ol {
 }
 
 .hero__item {
-	height: 470px;
+	height: 500px;
 	display: flex;
 	align-items: center;
 	padding-left: 75px;
@@ -802,7 +802,7 @@ ol {
 	max-width: 100%;
 }
 
-/* .categories__slider.owl-carousel .owl-nav button {
+.categories__slider.owl-carousel .owl-nav button {
 	font-size: 18px;
 	color: #1c1c1c;
 	height: 70px;
@@ -815,7 +815,7 @@ ol {
 	top: 50%;
 	-webkit-transform: translateY(-35px);
 	background: #ffffff;
-} */
+}
 
 .categories__slider.owl-carousel .owl-nav button.owl-next {
 	left: auto;
@@ -2630,7 +2630,7 @@ ol {
 -----------------------*/
 
 .footer {
-	background: #F3F6FA;
+	background: #b2c3da;
 	padding-top: 70px;
 	padding-bottom: 0;
 }
@@ -2742,7 +2742,7 @@ ol {
 }
 
 .footer__copyright {
-	border-top: 1px solid #ebebeb;
+	border-top: 1px solid #e6e1e1;
 	padding: 15px 0;
 	overflow: hidden;
 	margin-top: 20px;
@@ -2750,7 +2750,7 @@ ol {
 
 .footer__copyright__text {
 	font-size: 14px;
-	color: #1c1c1c;
+	color: #080707;
 	float: left;
 	line-height: 25px;
 }
@@ -3178,12 +3178,12 @@ ol {
 
 /* Wide Mobile = 480px */
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 480px) {
 	.hero__categories {
-		margin-bottom: 30px;
+		margin-bottom: 20px;
 	}
 	.hero__search {
-		margin-bottom: 30px;
+		margin-bottom: 20px;
 	}
 	.hero__search__form {
 		width: 100%;
@@ -3196,11 +3196,11 @@ ol {
 	}
 	.hero__search__phone {
 		float: left;
-		margin-top: 30px;
+		margin-top: 20px;
 	}
 	.categories__slider.owl-carousel .owl-nav {
 		text-align: center;
-		margin-top: 40px;
+		margin-top: 25px;
 	}
 	.categories__slider.owl-carousel .owl-nav button {
 		position: relative;
@@ -3216,7 +3216,7 @@ ol {
 	}
 	.footer__copyright__text {
 		float: none;
-		margin-bottom: 25px;
+		margin-bottom: 20px;
 	}
 	.footer__copyright__payment {
 		float: none;
@@ -3228,7 +3228,7 @@ ol {
 		text-align: center;
 	}
 	.product__details__pic {
-		margin-bottom: 40px;
+		margin-bottom: 25px;
 	}
 	.product__details__tab .nav-tabs:before {
 		display: none;
@@ -3287,7 +3287,7 @@ ol {
 		left: 0;
 	}
 	.humberger__menu__logo {
-		margin-bottom: 30px;
+		margin-bottom: 25px;
 	}
 	.humberger__menu__logo a {
 		display: inline-block;

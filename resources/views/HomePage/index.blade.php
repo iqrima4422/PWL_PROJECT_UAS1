@@ -2,8 +2,6 @@
 @section('content')
 
 <meta charset="UTF-8">
-    <meta name="description" content="Ogani Template">
-    <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
@@ -55,7 +53,7 @@
     
 
 <!-- Categories Section Begin -->
-<section class="categories">
+<section class="container py-3">
             <div class="row">
                 <div class="categories__slider owl-carousel">
                     <div class="col-lg-3">
@@ -200,14 +198,19 @@
     </section>
     <!-- Featured Section End -->
 
-    <section>
+    <section class="container py-3">
     <div class="card card-primary card-outline">
     <div class="card-body text-white bg-green">
     <h3 class="section-title-2 text-uppercase font-weight-300 text-center" ><b>Our</b> <span class="blue-text">Information</span></h3>
     <br></br>
             <div class="row">
-                  <p class="justify-text">Barang yang sudah dibeli tidak dapat dikembalikan lagi karena barang yang dikirim sudah melewati proses pengecekan dan dipastikan dalam kondisi baik. Sehingga apabila ada keterlambatan, kerusakan maupun kehilangan barang pada saat pengiriman. 
-                      Hal tersebut berada diluar tanggung jawab kami</p>
+                <p class="justify-text">Barang yang sudah dibeli tidak dapat dikembalikan lagi karena barang yang dikirim sudah melewati proses pengecekan dan dipastikan dalam kondisi baik. Sehingga apabila ada keterlambatan, kerusakan maupun kehilangan barang pada saat pengiriman,  
+                      Hal tersebut berada diluar tanggung jawab kami. 
+                </p>
+                <b>note* </b>
+                <p class="justify-text">
+                      <br/> Konfimasi Pengiriman Barang akan dilakukan 1 x 24 jam setelah melakukan checkout. Pembeli akan mendapatkan pesan dari pemilik toko.
+                </p>
                 
                 </div>
             </div>
