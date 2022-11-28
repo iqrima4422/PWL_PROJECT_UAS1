@@ -19,13 +19,13 @@
 </div>
 
 
-<section class="container py-5">
+<!-- <section class="container py-5">
     <div class="row text-center py-3">
         <div class="row">
             <img src="src/img/toko2.jpeg" alt="">
         </div>
     </div>
-</section>
+</section> -->
 
 <!-- Start Banner Hero -->
 <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">

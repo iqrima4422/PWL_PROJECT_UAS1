@@ -85,32 +85,6 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-3">
-        <div class="categories__item set-bg" data-setbg="">
-            <img src="{{asset('img/categories/sabun.png')}}" style="width: 100%; height: 100%">
-            <h5><a href="#">Sabun</a></h5>
-        </div>
-    </div>
-    <div class="col-lg-3">
-        <div class="categories__item set-bg">
-            <img src="{{asset('img/categories/gula.png')}}" style="width: 100%; height: 100%">
-            <h5><a href="#">Gula</a></h5>
-        </div>
-    </div>
-    <div class="col-lg-3">
-        <div class="categories__item set-bg">
-            <img src="{{asset('img/categories/tepung.png')}}" style="width: 100%; height: 100%">
-            <h5><a href="#">Tepung</a></h5>
-        </div>
-    </div>
-    <div class="col-lg-3">
-        <div class="categories__item set-bg">
-            <img src="{{asset('img/categories/telur.png')}}" style="width: 100%; height: 100%">
-            <h5><a href="#">Telur</a></h5>
-        </div>
-    </div>
-    </div>
-    </div>
 </section>
 <!-- Categories Section End -->
 
