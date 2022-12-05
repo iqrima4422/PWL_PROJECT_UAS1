@@ -6,6 +6,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
+                <form action="{{ route('SearchProduct') }}" method="GET">
+                    <div class="input-group">
+                        <input type="search" name="cari" class="form-control rounded" id="searchproduct" placeholder="Cari Barang Disini" aria-label="Search" aria-describedby="search-addon" value="{{old('cari')}}" />
+                        <button type="submit" class="btn btn-outline-primary ml-2">Cari</button>
+                    </div>
+                </form>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -16,15 +22,6 @@
         </div>
     </div><!-- /.container-fluid -->
 </section>
-
-<div class="col-md-4 mb-2">
-    <form action="{{ route('SearchProduct') }}" method="GET">
-        <div class="input-group">
-            <input type="search" name="cari" class="form-control rounded" placeholder="Cari Barang Disini" aria-label="Search" aria-describedby="search-addon" value=" {{old('cari')}}" />
-            <button type="submit" class="btn btn-outline-primary">Cari</button>
-        </div>
-    </form>
-</div>
 
 <div class="col-lg-12 col-md-13">
     <div class="product__discount">

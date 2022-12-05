@@ -39,8 +39,10 @@ class HomePageController extends Controller
     {
         $data1 = Product::orderBy($request->sorting, 'asc')->get();
         $total = Product::count();
+        $dataDiskon = Diskon::with('suppliers')->orderBy('id', 'asc')->paginate(5);
         return view('HomePage.gallery', ['galeri' => $data1], [
             'tittle' => 'Gallery Page',
+            'dataDiskon' => $dataDiskon,
             'total' => $total
         ]);
     }
@@ -310,7 +312,7 @@ class HomePageController extends Controller
     {
         $transaksi = Transaksi::with('products')->orderBy('created_at', 'desc')->where('user_id', Auth::user()->id)->get();
         $transaksiid = array_column($transaksi->toArray(), 'id');
-        $payment = Payment::with('transaksi')->whereIn('transaksi_id', $transaksiid)->paginate(5);
+        $payment = Payment::with('transaksi')->whereIn('transaksi_id', $transaksiid)->orderBy('created_at', 'desc')->paginate(5);
         return view('HomePage.purchaseHistory', ['tittle' => 'Purchase History Page', 'transaksi' => $transaksi, 'payment' => $payment]);
     }
 }

@@ -19,14 +19,18 @@
     </div>
 </div>
 
-<section class="hero">
-    <div class="row">
+
+<section class="container">
+    <div class="">
         <div class="hero__item set-bg" data-setbg="{{asset('src/img/toko2.jpeg')}}">
             <div class="hero__text">
                 <span>TOKO SEMBAKO BAROKAH</span>
                 <h2> Segala Macam Sembako <br />100% Halal</h2>
                 <h6>Free Pickup and Delivery Available</h6> <br>
                 <a href="{{ route('GalleryPage') }}" class="primary-btn">SHOP NOW</a>
+                <p class="mb-0 mt-3 mr-5 p-2" style="background: rgba(127, 173, 57,0.7);">*Barang yang sudah dibeli tidak dapat dikembalikan lagi karena barang yang dikirim sudah melewati proses pengecekan dan dipastikan dalam kondisi baik. Sehingga apabila ada keterlambatan, kerusakan maupun kehilangan barang pada saat pengiriman,
+                    Hal tersebut berada diluar tanggung jawab kami.
+                </p>
             </div>
         </div>
     </div>
@@ -34,7 +38,7 @@
 
 <!-- Start Categories of The Month -->
 <section class="container py-3">
-    <div class="row text-jusfity">
+    <div class="text-jusfity">
         <h1 style="color:green;" class="h1">Tentang Toko Sembako Barokah</h1>
         <p style="color:black;">
             Toko Kelontong Barokah merupakan toko yang menjual aneka macam barang sembako dan kebutuhan sehari-hari, seperti gula, beras, telur, tepung dan lain sebagainya.
@@ -195,24 +199,5 @@
 </section>
 <!-- Featured Section End -->
 
-<section class="container py-3">
-    <div class="card card-primary card-outline">
-        <div class="card-body text-white bg-green">
-            <h3 class="section-title-2 text-uppercase font-weight-300 text-center"><b>Our</b> <span class="blue-text">Information</span></h3>
-            <br></br>
-            <div class="row">
-                <p class="justify-text">Barang yang sudah dibeli tidak dapat dikembalikan lagi karena barang yang dikirim sudah melewati proses pengecekan dan dipastikan dalam kondisi baik. Sehingga apabila ada keterlambatan, kerusakan maupun kehilangan barang pada saat pengiriman,
-                    Hal tersebut berada diluar tanggung jawab kami.
-                </p>
-                <b>note* </b>
-                <p class="justify-text">
-                    <br /> Konfimasi Pengiriman Barang akan dilakukan 1 x 24 jam setelah melakukan checkout. Pembeli akan mendapatkan pesan dari pemilik toko.
-                </p>
-
-            </div>
-        </div>
-    </div>
-    </div>
-</section>
 
 @endsection
