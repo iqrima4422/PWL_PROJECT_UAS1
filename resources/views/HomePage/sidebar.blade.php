@@ -8,25 +8,32 @@
   <!-- Sidebar -->
   <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-      <div class="image">
-        <img src="{{ asset('storage/'.auth()->user()->foto) }}" class="img-circle elevation-2">
-      </div>
-      <div class="info">
-        <a href="{{ route('ProfilePage') }}" class="d-block">{{ auth()->user()->name }}</a>
-      </div>
-    </div>
-
-    <div class="mt-2">
-      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-        <li class="nav-item bg-danger">
-          <a href="{{ route('logout') }}" class="nav-link">
-            <i class="bi bi-box-arrow-in-left"></i>
-            <p>Keluar</p>
-          </a>
-        </li>
-      </ul>
-    </div>
+    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+      <li class="nav-item">
+        <div class="nav-link user-panel mt-3 p-0 mb-3 d-flex">
+          <div class="image">
+            <img src="{{ asset('storage/'.auth()->user()->foto) }}" class="img-circle elevation-2" alt="User Image">
+          </div>
+          <div class="info">
+            <a href="#" class="d-block">{{ auth()->user()->name }}</a>
+          </div>
+        </div>
+        <ul class="nav nav-treeview">
+          <li class="nav-item bg-warning">
+            <a href="{{ route('ProfilePageAdmin') }}" class="nav-link">
+              <i class=" fas fa-edit"></i>
+              <p>Edit Profil</p>
+            </a>
+          </li>
+          <li class="nav-item bg-danger">
+            <a href="{{ route('logout') }}" class="nav-link">
+              <i class=" bi bi-box-arrow-in-left"></i>
+              <p>Keluar</p>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
 
     <!-- Sidebar Menu -->
     <nav class="mt-2">
