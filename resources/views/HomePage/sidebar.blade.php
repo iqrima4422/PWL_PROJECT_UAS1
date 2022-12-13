@@ -20,7 +20,7 @@
         </div>
         <ul class="nav nav-treeview">
           <li class="nav-item bg-warning">
-            <a href="{{ route('ProfilePageAdmin') }}" class="nav-link">
+            <a href="{{ route('ProfilePage') }}" class="nav-link">
               <i class=" fas fa-edit"></i>
               <p>Edit Profil</p>
             </a>
